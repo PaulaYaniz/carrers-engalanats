@@ -1,58 +1,57 @@
-# 🔥 Carrers Engalanats del Raval d'Elx
+# Carrers Engalanats del Raval d'Elx
 
-Plataforma de votació digital professional per al XII Concurs de Carrers Engalanats de les Festes de Sant Joan, organitzat per l'Associació Veïnal del Raval d'Elx.
+Professional digital voting platform for the XII Street Decoration Competition of Sant Joan Festivities, organized by Associació Veïnal del Raval d'Elx.
 
-**Tradició des de 2011** · XII Edició 2026 · Una tradició que ens uneix
+**Tradition since 2011** · XII Edition 2026 · A tradition that unites us
 
-## 🏗️ Stack Tecnològic
+## Tech Stack
 
 - **Frontend:** HTML/CSS/JavaScript (Catalan)
 - **Backend:** TypeScript + Cloudflare Workers
-- **Base de dades:** D1 (SQLite a l'edge)
-- **Testing:** Vitest amb @cloudflare/vitest-pool-workers
-- **Desplegament:** Wrangler CLI
+- **Database:** D1 (SQLite at the edge)
+- **Testing:** Vitest with @cloudflare/vitest-pool-workers
+- **Deployment:** Wrangler CLI
 
-## ✨ Funcionalitats
+## Features
 
 ### Core
-- ✅ Votació pública amb validació d'email
-- ✅ Detecció de vots duplicats amb hash SHA-256
-- ✅ Galeria responsive dels 6 carrers participants
-- ✅ Pàgina de resultats en temps real amb animacions
-- ✅ Panel d'administració protegit
-- ✅ Exportació de dades a CSV
-- ✅ Rate limiting (10 peticions/minut per IP)
-- ✅ Accessibilitat WCAG AA
-- ✅ Interfície 100% en català
+- Public voting with email validation
+- Duplicate vote detection with SHA-256 hashing
+- Responsive gallery of 6 participating streets
+- Real-time results page with animations
+- Protected administration panel
+- CSV data export
+- Rate limiting (10 requests/minute per IP)
+- WCAG AA accessibility
+- 100% Catalan interface
 
-### Disseny Professional (v2.0)
-- 🎨 **Disseny artístic i modern** amb tipografia professional
-- 🔥 **Colors de Sant Joan** (vermell, taronja, groc)
-- 📖 **Context històric** de la tradició del Raval (des de 2011)
-- 🏆 **Animacions sofisticades** (hover, pulse, shimmer)
-- 📱 **Totalment responsive** amb transicions suaus
-- 🎯 **Hero sections** amb informació contextual
-- 🌟 **Secció educativa** sobre creativitat, sostenibilitat i comunitat
+### Professional Design
+- Modern artistic design with professional typography
+- Sant Joan colors (red, orange, yellow)
+- Sophisticated animations (hover, pulse, shimmer)
+- Fully responsive with smooth transitions
+- Hero sections with contextual information
+- Educational section on creativity, sustainability and community
 
-## 🚀 Inici Ràpid
+## Quick Start
 
-### 1. Instal·lar dependències
+### 1. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 2. Configurar la base de dades local
+### 2. Configure local database
 
-Les taules ja estan creades. Verifica que existeixen:
+Tables are already created. Verify they exist:
 
 ```bash
 npx wrangler d1 execute votacio-db --local --command "SELECT COUNT(*) FROM streets"
 ```
 
-### 3. Afegir imatges dels carrers
+### 3. Add street images
 
-Afegeix imatges dels 6 carrers a `public/images/streets/`:
+Add images of the 6 streets to `public/images/streets/`:
 
 - `travesia-sant-roc.jpg`
 - `joaquin-santo.jpg`
@@ -61,184 +60,184 @@ Afegeix imatges dels 6 carrers a `public/images/streets/`:
 - `porta-xiquica.jpg`
 - `filet-de-dins.jpg`
 
-### 4. Executar en mode desenvolupament
+### 4. Run in development mode
 
 ```bash
 npm run dev
 ```
 
-El servidor estarà disponible a `http://localhost:8787`
+Server will be available at `http://localhost:8787`
 
-## 🧪 Tests
+## Tests
 
-Executar tots els tests:
+Run all tests:
 
 ```bash
 npm test
 ```
 
-Tests disponibles:
-- ✅ Validació d'emails i hash SHA-256
-- ✅ Submissió de vots i detecció de duplicats
-- ✅ API de resultats
-- ✅ Autenticació admin
+Available tests:
+- Email validation and SHA-256 hashing
+- Vote submission and duplicate detection
+- Results API
+- Admin authentication
 
-## 📚 API Endpoints
+## API Endpoints
 
-### Públics
+### Public
 
-- `GET /` - Pàgina principal de votació
-- `GET /resultats` - Pàgina de resultats públics
-- `POST /api/vot` - Enviar vot
+- `GET /` - Main voting page
+- `GET /resultats` - Public results page
+- `POST /api/vot` - Submit vote
   ```json
   {
     "street_id": 1,
-    "email": "email@exemple.com"
+    "email": "email@example.com"
   }
   ```
-- `GET /api/carrers` - Llistat de tots els carrers
-- `GET /api/resultats` - Recompte de vots (amb caché 30s)
+- `GET /api/carrers` - List all streets
+- `GET /api/resultats` - Vote count (with 30s cache)
 
-### Admin (requereixen autenticació)
+### Admin (requires authentication)
 
-- `POST /api/admin/login` - Login admin
+- `POST /api/admin/login` - Admin login
   ```json
   {
-    "password": "contrasenya-admin"
+    "password": "admin-password"
   }
   ```
-- `GET /api/admin/dashboard` - Dashboard HTML
-- `GET /api/admin/resultats` - Resultats detallats
-- `POST /api/admin/export` - Exportar vots a CSV
-- `DELETE /api/admin/reset` - Esborrar tots els vots
+- `GET /api/admin/dashboard` - HTML dashboard
+- `GET /api/admin/resultats` - Detailed results
+- `POST /api/admin/export` - Export votes to CSV
+- `DELETE /api/admin/reset` - Delete all votes
 
-## 🔐 Configurar Contrasenya Admin
+## Configure Admin Password
 
-Abans de desplegar a producció, configura la contrasenya d'admin:
+Before deploying to production, configure admin password:
 
 ```bash
 npx wrangler secret put ADMIN_PASSWORD
-# Introdueix una contrasenya forta quan se't demani
+# Enter a strong password when prompted
 ```
 
-## 🌐 Desplegament a Producció
+## Production Deployment
 
-### 1. Crear la base de dades remota
+### 1. Create remote database
 
 ```bash
 npx wrangler d1 execute votacio-db --remote --file=./schema.sql
 npx wrangler d1 execute votacio-db --remote --file=./seed.sql
 ```
 
-### 2. Desplegar el worker
+### 2. Deploy worker
 
 ```bash
 npm run deploy
 ```
 
-El projecte estarà disponible a la URL proporcionada per Cloudflare (ex: `https://carrers-engalanats.your-subdomain.workers.dev`).
+Project will be available at the URL provided by Cloudflare (e.g., `https://carrers-engalanats.your-subdomain.workers.dev`).
 
-### 3. Verificar el desplegament
+### 3. Verify deployment
 
 ```bash
 curl https://carrers-engalanats.your-subdomain.workers.dev/api/carrers
 ```
 
-## 📊 Estructura del Projecte
+## Project Structure
 
 ```
 carrers-engalanats/
 ├── src/
-│   ├── index.ts              # Router principal
-│   ├── types.ts              # Definicions TypeScript
-│   ├── handlers/             # Gestors d'endpoints
+│   ├── index.ts              # Main router
+│   ├── types.ts              # TypeScript definitions
+│   ├── handlers/             # Endpoint handlers
 │   │   ├── vote.ts
 │   │   ├── results.ts
 │   │   └── admin.ts
-│   ├── services/             # Lògica de negoci
+│   ├── services/             # Business logic
 │   │   ├── email-validator.ts
 │   │   ├── vote-service.ts
 │   │   └── auth-service.ts
-│   ├── ui/                   # Templates HTML
+│   ├── ui/                   # HTML templates
 │   │   ├── voting-page.ts
 │   │   ├── results-page.ts
 │   │   └── admin-page.ts
-│   └── utils/                # Utilitats
+│   └── utils/                # Utilities
 │       ├── validators.ts
 │       └── rate-limiter.ts
-├── public/                   # Assets estàtics
+├── public/                   # Static assets
 │   └── images/streets/
 ├── test/                     # Tests
-├── schema.sql                # Esquema de BD
-├── seed.sql                  # Dades inicials
-├── wrangler.jsonc            # Configuració Cloudflare
+├── schema.sql                # Database schema
+├── seed.sql                  # Initial data
+├── wrangler.jsonc            # Cloudflare configuration
 └── package.json
 ```
 
-## 🔒 Seguretat
+## Security
 
-- **SQL Injection:** Totes les queries usen statements parametritzats
-- **XSS:** Tots els inputs d'usuari s'escapen al HTML
-- **Rate Limiting:** 10 peticions/minut per IP
-- **Privacitat:** Emails hasheats amb SHA-256 (no es guarden en text pla)
-- **Auth Admin:** Password fort via secrets, tokens amb expiració 24h
+- **SQL Injection:** All queries use parameterized statements
+- **XSS:** All user inputs are escaped in HTML
+- **Rate Limiting:** 10 requests/minute per IP
+- **Privacy:** Emails hashed with SHA-256 (not stored in plain text)
+- **Admin Auth:** Strong password via secrets, tokens with 24h expiration
 
-## 🎯 Optimitzacions
+## Optimizations
 
-- **Caché:** API de resultats amb TTL de 30s
-- **Índexs DB:** Tots els FKs i columnes consultades
-- **CDN:** Cloudflare cacheja automàticament els assets
-- **Edge Computing:** Worker desplegat globalment
+- **Cache:** Results API with 30s TTL
+- **DB Indexes:** All FKs and queried columns indexed
+- **CDN:** Cloudflare automatically caches assets
+- **Edge Computing:** Worker deployed globally
 
-## 📖 Ús
+## Usage
 
-### Per a votants
+### For voters
 
-1. Visita la pàgina principal
-2. Revisa la galeria de carrers decorats
-3. Selecciona el teu carrer favorit
-4. Introdueix el teu email
-5. Envia el vot
+1. Visit main page
+2. Review gallery of decorated streets
+3. Select your favorite street
+4. Enter your email
+5. Submit vote
 
-### Per a administradors
+### For administrators
 
-1. Visita `/api/admin/dashboard`
-2. Introdueix la contrasenya d'admin
-3. Revisa estadístiques i vots
-4. Exporta dades a CSV si cal
-5. Gestiona els vots
+1. Visit `/api/admin/dashboard`
+2. Enter admin password
+3. Review statistics and votes
+4. Export data to CSV if needed
+5. Manage votes
 
-## 🐛 Solució de Problemes
+## Troubleshooting
 
 ### Error: "database not found"
 
-Assegura't que has executat les migracions:
+Make sure you have run the migrations:
 
 ```bash
 npx wrangler d1 execute votacio-db --local --file=./schema.sql
 npx wrangler d1 execute votacio-db --local --file=./seed.sql
 ```
 
-### Les imatges no es carreguen
+### Images not loading
 
-Verifica que les imatges existeixen a `public/images/streets/` amb els noms correctes.
+Verify that images exist at `public/images/streets/` with correct names.
 
-### Tests fallen
+### Tests failing
 
-Regenera els tipus de Cloudflare:
+Regenerate Cloudflare types:
 
 ```bash
 npm run cf-typegen
 ```
 
-## 📝 Llicència
+## License
 
-Projecte creat per l'Associació Veïnal Raval.
+Project created by Associació Veïnal Raval.
 
-## 🤝 Contribucions
+## Contributions
 
-Per reportar errors o suggerir millores, contacta amb l'Associació Veïnal Raval.
+To report errors or suggest improvements, contact Associació Veïnal Raval.
 
 ---
 
-**Nota:** Aquest projecte pot escalar a 10.000+ usuaris sense modificacions gràcies a l'arquitectura serverless de Cloudflare Workers.
+**Note:** This project can scale to 10,000+ users without modifications thanks to Cloudflare Workers serverless architecture.
