@@ -1,0 +1,24 @@
+/**
+ * Configuració Cloudflare Workers per Carrers Engalanats
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "carrers-engalanats",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-09-27",
+	"observability": {
+		"enabled": true
+	},
+	"assets": {
+		"directory": "./public/",
+		"binding": "ASSETS"
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "votacio-db",
+			"database_id": "09f024c1-d24d-4290-97b6-a595336f6b34"
+		}
+	]
+}
