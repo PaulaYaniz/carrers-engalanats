@@ -2,7 +2,8 @@
 
 Professional digital voting platform for the XII Street Decoration Competition of Sant Joan Festivities, organized by Associació Veïnal del Raval d'Elx.
 
-**Tradition since 2011** · XII Edition 2026 · A tradition that unites us
+<img width="1139" height="810" alt="avraval" src="https://github.com/user-attachments/assets/e62135c1-f114-40c7-b849-636f53951603" />
+
 
 ## Tech Stack
 
