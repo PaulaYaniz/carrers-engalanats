@@ -1,6 +1,11 @@
 /**
  * Configuració Cloudflare Workers per Carrers Engalanats
  * https://developers.cloudflare.com/workers/wrangler/configuration/
+ *
+ * La web és de només lectura: els resultats estan fixats al codi
+ * (src/data/resultats.ts) i el Worker no té accés a cap base de dades.
+ * La base de dades D1 "votacio-db" (09f024c1-d24d-4290-97b6-a595336f6b34)
+ * ja no està vinculada, però no s'ha esborrat.
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
@@ -13,12 +18,5 @@
 	"assets": {
 		"directory": "./public/",
 		"binding": "ASSETS"
-	},
-	"d1_databases": [
-		{
-			"binding": "DB",
-			"database_name": "votacio-db",
-			"database_id": "09f024c1-d24d-4290-97b6-a595336f6b34"
-		}
-	]
+	}
 }
